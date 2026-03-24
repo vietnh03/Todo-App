@@ -9,14 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Lấy code từ repo
       - uses: actions/checkout@v3
 
-      # 2️⃣ Cài composer dependencies (có dev nếu muốn test)
       - name: Install dependencies
         run: composer install --optimize-autoloader
 
-      # 3️⃣ SSH vào EC2 và deploy
       - name: SSH Deploy to EC2
         uses: appleboy/ssh-action@v0.1.6
         with:
@@ -25,5 +22,4 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           script: |
             cd ~/Todo-App
-            docker-compose pull
-            docker-compose up -d --remove-orphans
+            docker-compose up -d --build
