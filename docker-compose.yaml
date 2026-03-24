@@ -1,9 +1,0 @@
-services:
-  php:
-    image: webdevops/php-nginx:8.4
-    volumes:
-      - .:/app
-    ports:
-      - "8003:80"
-    environment:
-      WEB_DOCUMENT_ROOT: /app/public
