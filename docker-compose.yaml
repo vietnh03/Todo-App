@@ -1,6 +1,6 @@
 services:
   php:
-    image: webdevops/php-nginx:8.4
+    image: ${DOCKERHUB_USERNAME}/todo-app:latest
     volumes:
       - .:/app
     ports:
